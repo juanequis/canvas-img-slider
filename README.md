@@ -11,3 +11,9 @@ Image Slider with canvas
 npm install
 npm run dev
 ```
+
+## Running tests Locally
+```sh
+npm run test
+npm run test:coverage
+```
