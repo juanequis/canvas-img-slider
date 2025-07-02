@@ -13,10 +13,25 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-#canvas {
+html,
+body {
+  height: 100%;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+#image-slider {
   display: block;
   margin: 0 auto;
   border: 1px solid #ccc;
+  cursor: grab;
+}
+
+#image-slider:active {
+  cursor: grabbing;
 }
 
 @media (prefers-color-scheme: light) {
