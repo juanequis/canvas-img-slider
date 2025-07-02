@@ -1,7 +1,6 @@
 import { ImageLoader } from './ImageLoader';
 import { CanvasRenderer } from './CanvasRenderer';
 
-
 /**
  * Slider class to create an image slider using a canvas element.
  * It allows dragging to view different images in a horizontal layout.
@@ -15,10 +14,20 @@ export class Slider {
   private isDragging = false;
   private startX = 0;
 
+  // Store bound event handlers for later removal
+  private boundOnMouseDown: (e: MouseEvent) => void;
+  private boundOnMouseMove: (e: MouseEvent) => void;
+  private boundOnMouseUp: () => void;
+
   constructor(canvas: HTMLCanvasElement, imagePaths: string[]) {
     this.canvas = canvas;
     this.renderer = new CanvasRenderer(canvas);
     this.loader = new ImageLoader(imagePaths);
+
+    // Bind event handlers
+    this.boundOnMouseDown = this.onMouseDown.bind(this);
+    this.boundOnMouseMove = this.onMouseMove.bind(this);
+    this.boundOnMouseUp = this.onMouseUp.bind(this);
 
     this.attachEventListeners();
     this.initialize();
@@ -36,9 +45,18 @@ export class Slider {
    * Attaches event listeners for mouse events to enable dragging functionality.
    */
   private attachEventListeners() {
-    this.canvas.addEventListener('mousedown', this.onMouseDown.bind(this));
-    window.addEventListener('mousemove', this.onMouseMove.bind(this));
-    window.addEventListener('mouseup', this.onMouseUp.bind(this));
+    this.canvas.addEventListener('mousedown', this.boundOnMouseDown);
+    window.addEventListener('mousemove', this.boundOnMouseMove);
+    window.addEventListener('mouseup', this.boundOnMouseUp);
+  }
+
+  /**
+   * Removes event listeners to prevent memory leaks.
+   */
+  public destroy() {
+    this.canvas.removeEventListener('mousedown', this.boundOnMouseDown);
+    window.removeEventListener('mousemove', this.boundOnMouseMove);
+    window.removeEventListener('mouseup', this.boundOnMouseUp);
   }
 
   /**
