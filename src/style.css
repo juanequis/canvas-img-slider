@@ -25,12 +25,19 @@ h1 {
 #image-slider {
   display: block;
   margin: 0 auto;
-  border: 1px solid #ccc;
+  outline: 1px solid #ccc;
   cursor: grab;
+  background-color: #f2f2f2;
+
+  :active {
+    cursor: grabbing;
+  }
+
 }
 
-#image-slider:active {
-  cursor: grabbing;
+.slider-instruction {
+  display: block;
+  text-align: center;
 }
 
 @media (prefers-color-scheme: light) {

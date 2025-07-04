@@ -9,6 +9,7 @@ if (!app) {
 app.innerHTML = `
   <h1>Canvas Image Slider</h1>
   <canvas id="image-slider" width="640" height="400"></canvas>
+  <small class="slider-instruction">Drag to change image</small>
 `;
 
 const canvas = document.querySelector<HTMLCanvasElement>('#image-slider');
