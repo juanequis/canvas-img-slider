@@ -16,14 +16,10 @@ export class CanvasRenderer {
     let x = offsetX;
 
     images.forEach((img) => {
-      // Draw a rectangle that matches the canvas size
-      this.ctx.fillStyle = '#f2f2f2'; // Set the rectangle color
-      this.ctx.fillRect(x, 0, this.canvas.width, this.canvas.height);
-
       // Calculate the aspect ratio to maintain the image's proportions
       const aspectRatio = img.width / img.height;
       let drawWidth = this.canvas.width;
-      let drawHeight = this.canvas.width / aspectRatio;
+      let drawHeight = this.canvas.width - 2 / aspectRatio;
 
       // If the calculated height exceeds the canvas height, adjust the width accordingly
       if (drawHeight > this.canvas.height) {

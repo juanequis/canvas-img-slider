@@ -12,8 +12,15 @@ npm install
 npm run dev
 ```
 
-## Running tests Locally
+## Running tests
 ```sh
 npm run test
 npm run test:coverage
+```
+
+## Running e2e tests
+```sh
+npm run e2e
+npm run e2e:headed
+npm run e2e:ui
 ```

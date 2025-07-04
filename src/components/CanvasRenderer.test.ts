@@ -38,8 +38,6 @@ describe('CanvasRenderer', () => {
     const image = { width: 200, height: 100 } as HTMLImageElement;
     renderer.drawImages([image], 0);
 
-    expect(ctx.fillRect).toHaveBeenCalledWith(0, 0, canvas.width, canvas.height);
-
     const aspectRatio = image.width / image.height;
     const expectedWidth = canvas.width;
     const expectedHeight = canvas.width / aspectRatio;
@@ -62,7 +60,6 @@ describe('CanvasRenderer', () => {
     ];
     renderer.drawImages(images, -640);
 
-    expect(ctx.fillRect).toHaveBeenCalledTimes(2);
     expect(ctx.drawImage).toHaveBeenCalledTimes(2);
   });
 

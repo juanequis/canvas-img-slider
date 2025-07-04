@@ -9,10 +9,19 @@ export default defineConfig({
       reporter: ['text', 'html'], // Output coverage reports
     },
     mockReset: true, // Reset mocks between tests
+    exclude: ['e2e'], // Exclude the folder from tests
+    resolveSnapshotPath: (testPath, snapExtension) =>
+      testPath + snapExtension
+  },
+  css: {
+    modules: {
+      scopeBehaviour: 'local',
+    },
   },
   resolve: {
     alias: {
-      '\\.css$': '', // Correctly mock all CSS imports
+      // Mock CSS imports
+      '\\.css$': 'identity-obj-proxy',
     },
   },
 });
