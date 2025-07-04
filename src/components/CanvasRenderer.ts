@@ -19,7 +19,7 @@ export class CanvasRenderer {
       // Calculate the aspect ratio to maintain the image's proportions
       const aspectRatio = img.width / img.height;
       let drawWidth = this.canvas.width;
-      let drawHeight = this.canvas.width - 2 / aspectRatio;
+      let drawHeight = this.canvas.width / aspectRatio;
 
       // If the calculated height exceeds the canvas height, adjust the width accordingly
       if (drawHeight > this.canvas.height) {
